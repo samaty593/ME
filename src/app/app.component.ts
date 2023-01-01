@@ -25,20 +25,24 @@ class MatrixClass {
 export class AppComponent {
 
   isClicked: boolean = false;
-  tic: boolean = false
   activityType: string;
   quotientFamilial: number;
   revenues: number;
   impotRevenu: number = 0;
   updatedMatrix: Matrix[];
   plafondQf = 1592;
+  maritalStatus: string;
 
   show() {
     this.isClicked = true;
   }
-tac() {
-  this.tic = !this.tic
-}
+
+tac(check) {
+  console.log(check.value);
+  console.log(!(this.maritalStatus === 'single'))
+  this.maritalStatus = check.value;
+  }
+
   public simulateIR(f) {
     let irQf: number, ir: number;
 

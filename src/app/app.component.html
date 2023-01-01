@@ -35,62 +35,85 @@
           <label for="3">Activite liberale</label>
         </div>
       </fieldset>
-      <fieldset class="mat-situation" (change)="tac()">
+      <fieldset class="mat-situation" (change)="tac(status)">
         <legend>selectionnez votre situation</legend>
         <div class="chip form-group">
           <input
+            #status="ngModel"
             id="single"
             type="radio"
             name="situation-maritale"
             value="single"
+            [(ngModel)]="maritalStatus"
           />
           <label for="single"
-            ><span [class.selected]="true" class="material-icons"> check </span
+            ><span *ngIf="maritalStatus === 'single'" class="material-icons">
+              check </span
             >célibataire</label
           >
         </div>
         <div class="chip form-group">
           <input
+            #status="ngModel"
             id="married"
             type="radio"
             name="situation-maritale"
             value="married"
+            [(ngModel)]="maritalStatus"
           />
           <label for="married"
-            ><span class="material-icons"> check </span>marié</label
+            ><span *ngIf="maritalStatus === 'married'" class="material-icons">
+              check </span
+            >marié</label
           >
         </div>
         <div class="chip form-group">
           <input
+            #status="ngModel"
             id="pacsed"
             type="radio"
             name="situation-maritale"
             value="pacsed"
+            [(ngModel)]="maritalStatus"
           />
           <label for="pacsed">
-            <span class="material-icons"> check </span> pacsé</label
+            <span *ngIf="maritalStatus === 'pacsed'" class="material-icons">
+              check
+            </span>
+            pacsé</label
           >
         </div>
         <div class="chip form-group">
           <input
+            #status="ngModel"
             id="veuf"
             type="radio"
             name="situation-maritale"
             value="veuf"
+            [(ngModel)]="maritalStatus"
           />
           <label for="veuf"
-            ><span class="material-icons"> check </span>veuf</label
+            ><span *ngIf="maritalStatus === 'veuf'" class="material-icons">
+              check </span
+            >veuf</label
           >
         </div>
         <div class="chip form-group">
           <input
+            #status="ngModel"
             id="parent-isole"
             type="radio"
             name="situation-maritale"
             value="parent-isole"
+            [(ngModel)]="maritalStatus"
           />
           <label for="parent-isole"
-            ><span class="material-icons"> check </span>parent isolé</label
+            ><span
+              *ngIf="maritalStatus === 'parent-isole'"
+              class="material-icons"
+            >
+              check </span
+            >parent isolé</label
           >
         </div>
       </fieldset>
