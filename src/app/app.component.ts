@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SeuilCaService } from './seuil-ca.service';
 
 interface Matrix { 
   tranche: number, seuil: number, rate: number
@@ -25,6 +26,8 @@ class MatrixClass {
 })
 export class AppComponent {
 
+  constructor(private seuilCa: SeuilCaService ) {}
+
   rateImpotMicro = [
     { rate: 0.01, abattement: 0.29 },
     { rate: 0.017, abattement: 0.5 },
@@ -37,18 +40,19 @@ export class AppComponent {
   updatedMatrix: Matrix[];
   plafondQf = 1678;
   maritalStatus: string;
+  seuilCaC: number;
 
   public simulateIR(f) {
     let irQf: number, ir: number;
     let qfParent: number = (this.maritalStatus === "married" || this.maritalStatus === "pacsed") ? 2 : 1;
-    this.revenuFraisPro = this.revenues;
+    this.revenuFraisPro = 0.9 * this.revenues;
 
     irQf = this.estimateIr(this.revenuFraisPro / this.quotientFamilial) * this.quotientFamilial;
     ir = this.estimateIr(this.revenuFraisPro / qfParent) * qfParent;
 
     let diminutionImpot = ir - irQf;
     let depassementSeuil = diminutionImpot - this.plafondQf * (this.quotientFamilial - qfParent) * 2;
-    console.log(this.estimateCaSeuil())
+    this.estimateCaSeuil();
 
     if(depassementSeuil > 0) return irQf + depassementSeuil;
     return irQf;
@@ -64,9 +68,15 @@ export class AppComponent {
             : this.activityType === "Prestation de Service" ?  this.rateImpotMicro[1].abattement
             : this.rateImpotMicro[2].abattement;
 
-    let caSeuil = 0.11 * (this.revenuFraisPro - this.quotientFamilial*10777)/(rate - abattement*0.11);
-    caSeuil = caSeuil < 0 ? 0 : caSeuil;
-    return caSeuil
+    let params = {
+      revenuFraisPro: this.revenuFraisPro,
+      quotientFamilial: this.quotientFamilial,
+      rate: rate,
+      abattement: abattement
+    }
+            
+    this.seuilCa.estimateSeuilCa(params).subscribe(r=> console.log(r))
+
   }
 
   private estimateIr(revenues) {
