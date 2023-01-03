@@ -1,7 +1,7 @@
 [build]
   command = "ng build"
   functions = "netlify/functions"
-  publish = "dist/ME"
+  publish = "dist/Micro"
 
 
 [[redirects]]
