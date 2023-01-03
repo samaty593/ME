@@ -5,14 +5,15 @@ interface Matrix {
 };
 
 class MatrixClass {
-  matrix: Matrix[]
+  mBase = [0, 10777, 27478, 78570, 168994]
+  matrix: Matrix[];
   constructor() {
     this.matrix = [
-      { tranche: 10225, seuil: 0, rate: 0 },
-      { tranche: 26070, seuil: 10225, rate: 0.11 },
-      { tranche: 74546, seuil: 26070, rate: 0.3 },
-      { tranche: 160336, seuil: 74546, rate: 0.41 },
-      { tranche: 0, seuil: 160336, rate: 0.45}
+      { tranche: this.mBase[1], seuil: this.mBase[0], rate: 0 },
+      { tranche: this.mBase[2], seuil: this.mBase[1], rate: 0.11 },
+      { tranche: this.mBase[3], seuil: this.mBase[2], rate: 0.3 },
+      { tranche: this.mBase[4], seuil: this.mBase[3], rate: 0.41 },
+      { tranche: 0, seuil: this.mBase[4], rate: 0.45}
     ];
   }
 }
@@ -24,45 +25,53 @@ class MatrixClass {
 })
 export class AppComponent {
 
-  isClicked: boolean = false;
+  rateImpotMicro = [
+    { rate: 0.01, abattement: 0.29 },
+    { rate: 0.017, abattement: 0.5 },
+    { rate: 0.022, abattement: 0.66 },
+  ];
   activityType: string;
   quotientFamilial: number;
   revenues: number;
-  impotRevenu: number = 0;
+  revenuFraisPro: number;
   updatedMatrix: Matrix[];
-  plafondQf = 1592;
+  plafondQf = 1678;
   maritalStatus: string;
-
-  show() {
-    this.isClicked = true;
-  }
-
-tac(check) {
-  console.log(check.value);
-  console.log(!(this.maritalStatus === 'single'))
-  this.maritalStatus = check.value;
-  }
 
   public simulateIR(f) {
     let irQf: number, ir: number;
+    let qfParent: number = (this.maritalStatus === "married" || this.maritalStatus === "pacsed") ? 2 : 1;
+    this.revenuFraisPro = this.revenues;
 
-    let matrixQf = this.updateMatrix(this.revenues/this.quotientFamilial);
-    let matrix = this.updateMatrix(this.revenues/2);
-    irQf = this.estimateIr(matrixQf) * this.quotientFamilial;
-    ir = this.estimateIr(matrix) * 2;
+    irQf = this.estimateIr(this.revenuFraisPro / this.quotientFamilial) * this.quotientFamilial;
+    ir = this.estimateIr(this.revenuFraisPro / qfParent) * qfParent;
+
     let diminutionImpot = ir - irQf;
-    let depassementSeuil = diminutionImpot - this.plafondQf * (this.quotientFamilial -2) * 2;
+    let depassementSeuil = diminutionImpot - this.plafondQf * (this.quotientFamilial - qfParent) * 2;
+    console.log(this.estimateCaSeuil())
 
-    if(depassementSeuil > 0) this.impotRevenu = irQf + depassementSeuil;
-    else this.impotRevenu = irQf;
+    if(depassementSeuil > 0) return irQf + depassementSeuil;
+    return irQf;
 
-    console.log(this.impotRevenu)
-
-    this.impotRevenu = 0;
   }
 
-  private estimateIr(matrix: Matrix[]) {
+  private estimateCaSeuil() {
+    let rate = this.activityType === "Activite de Vente" ? this.rateImpotMicro[0].rate 
+            : this.activityType === "Prestation de Service" ?  this.rateImpotMicro[1].rate 
+            : this.rateImpotMicro[2].rate ;
+
+    let abattement = this.activityType === "Activite de Vente" ? this.rateImpotMicro[0].abattement
+            : this.activityType === "Prestation de Service" ?  this.rateImpotMicro[1].abattement
+            : this.rateImpotMicro[2].abattement;
+
+    let caSeuil = 0.11 * (this.revenuFraisPro - this.quotientFamilial*10777)/(rate - abattement*0.11);
+    caSeuil = caSeuil < 0 ? 0 : caSeuil;
+    return caSeuil
+  }
+
+  private estimateIr(revenues) {
     let IR: number = 0;
+    let matrix = this.updateMatrix(revenues);
 
     matrix.forEach(item => {
       IR += (item.tranche - item.seuil) * item.rate;

@@ -1,7 +1,7 @@
 <article>
   <section>
     <form #f="ngForm" (ngSubmit)="simulateIR(f.value)">
-      <fieldset class="activity-type" (change)="show()">
+      <fieldset class="activity-type">
         <legend>Choississez votre activité</legend>
         <div class="form-group radio">
           <input
@@ -12,7 +12,7 @@
             [(ngModel)]="activityType"
             required
           />
-          <label for="1">Activite de Vente</label>
+          <label for="1">Activité de Vente</label>
         </div>
         <div class="radio form-group">
           <input
@@ -32,92 +32,94 @@
             value="Activite liberale"
             [(ngModel)]="activityType"
           />
-          <label for="3">Activite liberale</label>
+          <label for="3">Activité Liberale</label>
         </div>
       </fieldset>
-      <fieldset class="mat-situation" (change)="tac(status)">
-        <legend>selectionnez votre situation</legend>
-        <div class="chip form-group">
-          <input
-            #status="ngModel"
-            id="single"
-            type="radio"
-            name="situation-maritale"
-            value="single"
-            [(ngModel)]="maritalStatus"
-          />
-          <label for="single"
-            ><span *ngIf="maritalStatus === 'single'" class="material-icons">
-              check </span
-            >célibataire</label
-          >
-        </div>
-        <div class="chip form-group">
-          <input
-            #status="ngModel"
-            id="married"
-            type="radio"
-            name="situation-maritale"
-            value="married"
-            [(ngModel)]="maritalStatus"
-          />
-          <label for="married"
-            ><span *ngIf="maritalStatus === 'married'" class="material-icons">
-              check </span
-            >marié</label
-          >
-        </div>
-        <div class="chip form-group">
-          <input
-            #status="ngModel"
-            id="pacsed"
-            type="radio"
-            name="situation-maritale"
-            value="pacsed"
-            [(ngModel)]="maritalStatus"
-          />
-          <label for="pacsed">
-            <span *ngIf="maritalStatus === 'pacsed'" class="material-icons">
-              check
-            </span>
-            pacsé</label
-          >
-        </div>
-        <div class="chip form-group">
-          <input
-            #status="ngModel"
-            id="veuf"
-            type="radio"
-            name="situation-maritale"
-            value="veuf"
-            [(ngModel)]="maritalStatus"
-          />
-          <label for="veuf"
-            ><span *ngIf="maritalStatus === 'veuf'" class="material-icons">
-              check </span
-            >veuf</label
-          >
-        </div>
-        <div class="chip form-group">
-          <input
-            #status="ngModel"
-            id="parent-isole"
-            type="radio"
-            name="situation-maritale"
-            value="parent-isole"
-            [(ngModel)]="maritalStatus"
-          />
-          <label for="parent-isole"
-            ><span
-              *ngIf="maritalStatus === 'parent-isole'"
-              class="material-icons"
+      <ng-container *ngIf="activityType">
+        <fieldset class="mat-situation">
+          <legend>selectionnez votre situation</legend>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="married"
+              type="radio"
+              name="situation-maritale"
+              value="married"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="married"
+              ><span *ngIf="status.value === 'married'" class="material-icons">
+                check </span
+              >marié</label
             >
-              check </span
-            >parent isolé</label
-          >
-        </div>
-      </fieldset>
-      <ng-container *ngIf="isClicked">
+          </div>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="pacsed"
+              type="radio"
+              name="situation-maritale"
+              value="pacsed"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="pacsed">
+              <span *ngIf="status.value === 'pacsed'" class="material-icons">
+                check
+              </span>
+              pacsé</label
+            >
+          </div>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="single"
+              type="radio"
+              name="situation-maritale"
+              value="single"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="single"
+              ><span *ngIf="status.value === 'single'" class="material-icons">
+                check </span
+              >célibataire</label
+            >
+          </div>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="parent-isole"
+              type="radio"
+              name="situation-maritale"
+              value="parent-isole"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="parent-isole"
+              ><span
+                *ngIf="status.value === 'parent-isole'"
+                class="material-icons"
+              >
+                check </span
+              >parent isolé</label
+            >
+          </div>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="veuf"
+              type="radio"
+              name="situation-maritale"
+              value="veuf"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="veuf"
+              ><span *ngIf="status.value === 'veuf'" class="material-icons">
+                check </span
+              >veuf</label
+            >
+          </div>
+        </fieldset>
+      </ng-container>
+      <ng-container *ngIf="maritalStatus">
         <fieldset class="revenus">
           <legend>Vos revenus</legend>
           <div class="number form-group">
