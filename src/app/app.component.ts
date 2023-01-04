@@ -55,8 +55,8 @@ export class AppComponent {
 
     this.estimateCaSeuil();
 
-    // if(depassementSeuil > 0) return irQf + depassementSeuil;
-    // return irQf;
+    if(depassementSeuil > 0) return irQf + depassementSeuil;
+    return irQf;
 
   }
 
