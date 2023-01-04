@@ -76,7 +76,7 @@ export class AppComponent {
       abattement: abattement
     }
             
-    this.seuilCa.estimateSeuilCa(params).subscribe(r => r.then( r => console.log(r)))
+    this.seuilCa.estimateSeuilCa(params).subscribe(r=> console.log(r))
   }
 
   private estimateIr(revenues) {
