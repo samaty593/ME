@@ -9,7 +9,7 @@ export class SeuilCaService {
   constructor(private http: HttpClient) { }
 
     estimateSeuilCa(params) {
-      return this.http.get('/.netlify/functions/seuilCa', {
+      return this.http.get<Promise<any>>('/.netlify/functions/seuilCa', {
          params: { 
           ['revenuFraisPro']: params.revenuFraisPro,
           ['quotientFamilial']: params.quotientFamilial,

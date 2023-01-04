@@ -52,7 +52,7 @@ export class AppComponent {
 
     let diminutionImpot = ir - irQf;
     let depassementSeuil = diminutionImpot - this.plafondQf * (this.quotientFamilial - qfParent) * 2;
-
+    
     this.estimateCaSeuil();
 
     if(depassementSeuil > 0) return irQf + depassementSeuil;
@@ -76,7 +76,7 @@ export class AppComponent {
       abattement: abattement
     }
             
-    this.seuilCa.estimateSeuilCa(params).subscribe(r=> console.log(JSON.stringify(r)))
+    this.seuilCa.estimateSeuilCa(params).subscribe(r => r.then( r => console.log(r)))
   }
 
   private estimateIr(revenues) {
