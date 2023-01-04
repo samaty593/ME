@@ -15,7 +15,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
     }),
   }
  } catch(err) {
-      console.log(err);
         return {
           statusCode: 500,
           body: err.toString()
