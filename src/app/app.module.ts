@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ImpotRevenuService } from './impot-revenu.service';
 import { SeuilCaService } from './seuil-ca.service';
 
 @NgModule({
@@ -21,7 +22,7 @@ import { SeuilCaService } from './seuil-ca.service';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [SeuilCaService],
+  providers: [SeuilCaService, ImpotRevenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
