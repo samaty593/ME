@@ -1,15 +1,30 @@
+$base-color: #96154a;
+$base-font-size: 1.4rem;
+
+.form {
+    padding: 3rem;
+}
+
+
 input[type="radio"] {
-    appearance: none;
+display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+legend {
+    margin-bottom: 1.5rem;
 }
 
 fieldset {
-    width:fit-content;
-    padding: 2rem;
-    border: none;
     margin-bottom: 3rem;
+    border: none;
 }
 
-.activity-type, .mat-situation{
+.activity-type, .mat-situation {
     display: flex;
     column-gap: 2rem;
 }
@@ -17,25 +32,38 @@ fieldset {
 .form-group {
      &.radio {
         label {
+            font-size: $base-font-size;
             border-radius: 5px;
-            background-color: rgba($color: rebeccapurple, $alpha: 1.0);
             padding: 2rem 5rem;
-            color: white;
+            color: $base-color;
             cursor: pointer;
+            border: 2px solid $base-color;
+            transition: background-color 0.3s ease;
+            display: flex;
+
         }
 
         :checked + label {
-            background-color: rgba($color: green, $alpha: 1.0);
+            background-color: rgba($color: $base-color, $alpha: 1.0);
+            color: white;
+        }
+
+        :hover + label {
+            background-color: rgba($color: $base-color, $alpha: 1.0);
+            color: white;
         }
      } 
 
     &.chip {
         label {
             padding: 0.4rem 1rem;
-            background-color: rgba($color: rebeccapurple, $alpha: 1.0);
+            border: 2px solid $base-color;
             border-radius: 25px;
-            color: white;
+            color: $base-color;
             display: flex;
+            transition: all 0.3s ease;
+            font-size: $base-font-size;
+
 
             span {
                 font-size: medium;
@@ -45,38 +73,49 @@ fieldset {
         }
 
         :checked + label {
-            background-color: rgba($color: green, $alpha: 1.0);
-
+            background-color: rgba($color: $base-color, $alpha: 1.0);
+            color: white;
         }
 
-      
+        :hover + label {
+            background-color: rgba($color: $base-color, $alpha: 1.0);
+            color: white;
+        }
     }
-   
-}
 
+    &.number {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 40vw;
+
+        input:focus + label, input:valid + label {
+            font-size: 0;
+            transition: font-size 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        input:focus ~ span::before, input:focus ~ span::after{
+            width: 50%;
+        }
+    
+    }
+}
 
 .revenus {
     display: flex;
-    width:fit-content;
+    width: fit-content;
     column-gap: 2rem;
-}
 
-.number.form-group {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
-    
     input {
-        height: 4rem;
-        border-radius: 5px;
+        height: 5rem;
+        border-radius: 10px;
         border: none;
         box-shadow: 0 0 0 1px #dadce0;
         text-indent: 2rem;
         text-align: center;
-        background-color: transparent
-
-
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
     } 
 
     label {
@@ -87,34 +126,83 @@ fieldset {
         color: grey;
         font-size: 1.4rem;
         z-index: -1;
+        font-style: italic;
+    }
+
+    .bar {
+        margin-left: 5px;
+        width: calc(100% - 10px);
+        position: relative;
+        top: -3px;
+        height: 3px;
+        border: 5px;
+        z-index: -1;
+
+        &::before {
+            position: absolute;
+            background-color: #4dc1be;
+            width: 0%;
+            height: 100%;
+            content: '';
+            left:50%;
+            transition: width 0.25s ease-out;
+
+        }
+
+        &::after {
+            position: absolute;
+            background-color: #4dc1be;
+            width: 0%;
+            height: 100%;
+            content: '';
+            right:50%;
+            transition: width 0.25s ease-out;
+         }
     }
 
     .currency {
         position: absolute;
+        right:0;
         font-weight: bold;
         background-color: lightgrey;
         width: 4rem;
-        height: 100%;
-        padding: 10px 0;
+        height: calc(100% - 3px);
+        padding: 13px 0;
         text-align: center;
-        right: 0;
-        z-index: -1;
-
+        border-radius: 0 10px 10px 0;
     }
-} 
-
-.number input:focus + label, .number input:valid + label {
-    transform: translateY(-100%) scale(0.75);
-    color: #6200ee;
-    margin-left: 0;
-    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),color 150ms cubic-bezier(0.4, 0, 0.2, 1), top 500ms;
 }
 
  input[type="submit"] {
     border: none;
-    padding: 1rem 1rem;
-    background-color: #6200ee;
-    border-radius: 4px;
+    margin-left: 1rem;
+    padding: 1rem 5rem;
+    background-color: $base-color;
+    border-radius: 10px;
     color: white;
     cursor: pointer;
+    height: 5rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: white;
+        color: $base-color;
+        border: 2px solid $base-color;
+    }
+
+    &:disabled {
+        background-color: rgba($color: $base-color, $alpha: 0.7);
+    }
+
  }
+
+h1 {
+    width: fit-content;
+    margin:  3rem auto;
+    color:$base-color;
+    font-size: 4rem;
+    font-weight: normal;
+    letter-spacing: normal;
+    
+}

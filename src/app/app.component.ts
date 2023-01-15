@@ -23,7 +23,7 @@ export class AppComponent {
   revenues: number;
   maritalStatus: string;
 
-  public simulateIR(f) {
+  public simulateIR() {
     let params = {
       maritalStatus: this.maritalStatus,
       revenues: this.revenues,

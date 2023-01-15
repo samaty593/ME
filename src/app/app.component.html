@@ -1,38 +1,41 @@
 <article>
-  <section>
-    <form #f="ngForm" (ngSubmit)="simulateIR(f.value)">
-      <fieldset class="activity-type">
+  <h1>Estimez le Seuil de Chiffre d'Affaire</h1>
+  <section class="form">
+    <form #f="ngForm" (ngSubmit)="simulateIR()">
+      <fieldset>
         <legend>Choississez votre activité</legend>
-        <div class="form-group radio">
-          <input
-            id="1"
-            type="radio"
-            name="activity-type"
-            value="Activite de Vente"
-            [(ngModel)]="activityType"
-            required
-          />
-          <label for="1">Activité de Vente</label>
-        </div>
-        <div class="radio form-group">
-          <input
-            id="2"
-            type="radio"
-            name="activity-type"
-            value="Prestation de Service"
-            [(ngModel)]="activityType"
-          />
-          <label for="2">Prestation de Service</label>
-        </div>
-        <div class="radio form-group">
-          <input
-            id="3"
-            type="radio"
-            name="activity-type"
-            value="Activite liberale"
-            [(ngModel)]="activityType"
-          />
-          <label for="3">Activité Liberale</label>
+        <div class="activity-type">
+          <div class="form-group radio">
+            <input
+              id="1"
+              type="radio"
+              name="activity-type"
+              value="Activite de Vente"
+              [(ngModel)]="activityType"
+              required
+            />
+            <label for="1">Activité de Vente</label>
+          </div>
+          <div class="radio form-group">
+            <input
+              id="2"
+              type="radio"
+              name="activity-type"
+              value="Prestation de Service"
+              [(ngModel)]="activityType"
+            />
+            <label for="2">Prestation de Service</label>
+          </div>
+          <div class="radio form-group">
+            <input
+              id="3"
+              type="radio"
+              name="activity-type"
+              value="Activite liberale"
+              [(ngModel)]="activityType"
+            />
+            <label for="3">Activité Liberale</label>
+          </div>
         </div>
       </fieldset>
       <ng-container *ngIf="activityType">
@@ -102,26 +105,11 @@
               >parent isolé</label
             >
           </div>
-          <div class="chip form-group">
-            <input
-              #status="ngModel"
-              id="veuf"
-              type="radio"
-              name="situation-maritale"
-              value="veuf"
-              [(ngModel)]="maritalStatus"
-            />
-            <label for="veuf"
-              ><span *ngIf="status.value === 'veuf'" class="material-icons">
-                check </span
-              >veuf</label
-            >
-          </div>
         </fieldset>
       </ng-container>
-      <ng-container *ngIf="maritalStatus">
-        <fieldset class="revenus">
-          <legend>Vos revenus</legend>
+      <fieldset *ngIf="maritalStatus" style="display: flex">
+        <legend>Vos revenus</legend>
+        <div class="revenus">
           <div class="number form-group">
             <input
               min="0"
@@ -132,7 +120,8 @@
               #qf="ngModel"
               required
             />
-            <label for="qf">Indiquez votre QF</label>
+            <label for="qf">Votre nombre de parts</label>
+            <span class="bar"></span>
           </div>
           <div class="number form-group">
             <input
@@ -144,12 +133,13 @@
               #revNet="ngModel"
               required
             />
-            <label for="number">Indiquez votre salaire annuel net</label>
+            <label for="number">Vos revenues salariaux annuels</label>
+            <span class="bar"></span>
             <div class="currency">€</div>
           </div>
-        </fieldset>
-      </ng-container>
-      <input type="submit" value="Simuler" />
+        </div>
+        <input type="submit" value="Estimer" [disabled]="f.invalid" />
+      </fieldset>
     </form>
   </section>
   <section></section>
