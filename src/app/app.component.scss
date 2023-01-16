@@ -2,7 +2,7 @@ $base-color: #96154a;
 $base-font-size: 1.4rem;
 
 .form {
-    padding: 3rem;
+    padding: 5rem;
 }
 
 
@@ -17,10 +17,11 @@ input::-webkit-inner-spin-button {
 
 legend {
     margin-bottom: 1.5rem;
+    font-size: 1.4rem;
 }
 
 fieldset {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     border: none;
 }
 
@@ -87,7 +88,7 @@ fieldset {
         position: relative;
         display: flex;
         flex-direction: column;
-        width: 40vw;
+        width: 35vw;
 
         input:focus + label, input:valid + label {
             font-size: 0;
@@ -206,3 +207,28 @@ h1 {
     letter-spacing: normal;
     
 }
+main {
+    height: 100vh;
+}
+
+.result {
+    div {
+        width:fit-content;
+        margin: auto;
+        font-size: 3rem;
+        font-style: italic;
+        color:rgba($color: #000000, $alpha: 0.6)
+        
+    }
+
+    span:first-child {
+            color:$base-color;
+            font-style: normal;
+            margin-right: 2rem;
+    }
+}
+
+// footer {
+//     height: 20rem;
+//     background-color: rgba($color: #000000, $alpha: 0.7);
+// }

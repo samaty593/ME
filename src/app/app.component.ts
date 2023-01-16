@@ -22,6 +22,7 @@ export class AppComponent {
   quotientFamilial: number;
   revenues: number;
   maritalStatus: string;
+  caSeuil: string;
 
   public simulateIR() {
     let params = {
@@ -32,10 +33,9 @@ export class AppComponent {
 
     this.impotRev.estimateImpotRev(params).subscribe(r => console.log(r));
 
-    this.estimateCaSeuil();
   }
 
-  private estimateCaSeuil() {
+  public estimateCaSeuil() {
     let rate = this.activityType === "Activite de Vente" ? this.rateImpotMicro[0].rate 
             : this.activityType === "Prestation de Service" ?  this.rateImpotMicro[1].rate 
             : this.rateImpotMicro[2].rate ;
@@ -51,7 +51,11 @@ export class AppComponent {
       abattement: abattement
     }
             
-    this.seuilCa.estimateSeuilCa(params).subscribe(r=> console.log(r))
+    this.seuilCa.estimateSeuilCa(params)
+      .subscribe(r => {
+        this.caSeuil = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(r.caseuil)
+         
+      })
   }
 
 

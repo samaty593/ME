@@ -5,13 +5,14 @@ export const handler: Handler = async (event: HandlerEvent) => {
   
  try {
 
-  let caSeuil = 0.11 * (+revenuFraisPro - +quotientFamilial*10777)/(+rate - +abattement*0.11);
+  let caSeuil: number = 0.11 * (+revenuFraisPro - +quotientFamilial*10777)/(+rate - +abattement*0.11);
+  caSeuil = +caSeuil.toFixed(0);
   caSeuil = caSeuil < 0 ? 0 : caSeuil;
 
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: `Seuil de Chiffre d'Affaire, ${caSeuil}`,
+      caseuil: caSeuil,
     }),
   }
  } catch(err) {
