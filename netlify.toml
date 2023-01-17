@@ -1,5 +1,5 @@
 [build]
-  command = "ng build"
+  command = "npm run prerender"
   functions = "netlify/functions"
   publish = "dist/me/browser"
 
