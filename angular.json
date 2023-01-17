@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ME:build:production"
+              "browserTarget": "me:build:production"
             },
             "development": {
-              "browserTarget": "ME:build:development"
+              "browserTarget": "me:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ME:build"
+            "browserTarget": "me:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/ME/server",
+            "outputPath": "dist/me/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "inlineStyleLanguage": "scss"
@@ -134,12 +134,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "ME:build:development",
-              "serverTarget": "ME:server:development"
+              "browserTarget": "me:build:development",
+              "serverTarget": "me:server:development"
             },
             "production": {
-              "browserTarget": "ME:build:production",
-              "serverTarget": "ME:server:production"
+              "browserTarget": "me:build:production",
+              "serverTarget": ":server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -153,12 +153,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "ME:build:production",
-              "serverTarget": "ME:server:production"
+              "browserTarget": "me:build:production",
+              "serverTarget": "me:server:production"
             },
             "development": {
-              "browserTarget": "ME:build:development",
-              "serverTarget": "ME:server:development"
+              "browserTarget": "me:build:development",
+              "serverTarget": "me:server:development"
             }
           },
           "defaultConfiguration": "production"
