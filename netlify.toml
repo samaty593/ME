@@ -1,7 +1,7 @@
 [build]
   command = "ng build"
   functions = "netlify/functions"
-  publish = "dist/me"
+  publish = "dist/me/browser"
 
 
 [[redirects]]
