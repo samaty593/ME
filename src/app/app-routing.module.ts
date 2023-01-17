@@ -7,6 +7,6 @@ const routes: Routes = [];
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabledBlocking'
 })],
-  exports: [RouterModule]
+  exports: [ RouterModule]
 })
 export class AppRoutingModule { }
