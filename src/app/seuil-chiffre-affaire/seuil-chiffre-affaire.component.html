@@ -38,81 +38,12 @@
           </div>
         </div>
       </fieldset>
-      <ng-container *ngIf="activityType">
-        <fieldset class="mat-situation">
-          <legend>selectionnez votre situation</legend>
-          <div class="chip form-group">
-            <input
-              #status="ngModel"
-              id="married"
-              type="radio"
-              name="situation-maritale"
-              value="married"
-              [(ngModel)]="maritalStatus"
-            />
-            <label for="married"
-              ><span *ngIf="status.value === 'married'" class="material-icons">
-                check </span
-              >marié</label
-            >
-          </div>
-          <div class="chip form-group">
-            <input
-              #status="ngModel"
-              id="pacsed"
-              type="radio"
-              name="situation-maritale"
-              value="pacsed"
-              [(ngModel)]="maritalStatus"
-            />
-            <label for="pacsed">
-              <span *ngIf="status.value === 'pacsed'" class="material-icons">
-                check
-              </span>
-              pacsé</label
-            >
-          </div>
-          <div class="chip form-group">
-            <input
-              #status="ngModel"
-              id="single"
-              type="radio"
-              name="situation-maritale"
-              value="single"
-              [(ngModel)]="maritalStatus"
-            />
-            <label for="single"
-              ><span *ngIf="status.value === 'single'" class="material-icons">
-                check </span
-              >célibataire</label
-            >
-          </div>
-          <div class="chip form-group">
-            <input
-              #status="ngModel"
-              id="parent-isole"
-              type="radio"
-              name="situation-maritale"
-              value="parent-isole"
-              [(ngModel)]="maritalStatus"
-            />
-            <label for="parent-isole"
-              ><span
-                *ngIf="status.value === 'parent-isole'"
-                class="material-icons"
-              >
-                check </span
-              >parent isolé</label
-            >
-          </div>
-        </fieldset>
-      </ng-container>
-      <fieldset *ngIf="maritalStatus" style="display: flex">
+      <fieldset *ngIf="activityType" style="display: flex">
         <legend>Vos revenus</legend>
         <div class="revenus">
           <div class="number form-group">
             <input
-              min="0"
+              min="1"
               type="number"
               required
               name="quotient-familial"

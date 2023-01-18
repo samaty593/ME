@@ -1,0 +1,167 @@
+<article>
+  <h1>Estimez Votre Impôt Avec et Sans le Versement Forfaitaire</h1>
+  <section class="form">
+    <form #f="ngForm" (ngSubmit)="estimateImpRev()">
+      <fieldset>
+        <legend>Choississez votre activité</legend>
+        <div class="activity-type">
+          <div class="form-group radio">
+            <input
+              id="1"
+              type="radio"
+              name="activity-type"
+              value="Activite de Vente"
+              [(ngModel)]="activityType"
+              required
+            />
+            <label for="1">Activité de Vente</label>
+          </div>
+          <div class="radio form-group">
+            <input
+              id="2"
+              type="radio"
+              name="activity-type"
+              value="Prestation de Service"
+              [(ngModel)]="activityType"
+            />
+            <label for="2">Prestation de Service</label>
+          </div>
+          <div class="radio form-group">
+            <input
+              id="3"
+              type="radio"
+              name="activity-type"
+              value="Activite liberale"
+              [(ngModel)]="activityType"
+            />
+            <label for="3">Activité Liberale</label>
+          </div>
+        </div>
+      </fieldset>
+      <ng-container *ngIf="activityType">
+        <fieldset class="mat-situation">
+          <legend>selectionnez votre situation</legend>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="married"
+              type="radio"
+              name="situation-maritale"
+              value="married"
+              [(ngModel)]="maritalStatus"
+              required
+            />
+            <label for="married"
+              ><span *ngIf="status.value === 'married'" class="material-icons">
+                check </span
+              >marié</label
+            >
+          </div>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="pacsed"
+              type="radio"
+              name="situation-maritale"
+              value="pacsed"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="pacsed">
+              <span *ngIf="status.value === 'pacsed'" class="material-icons">
+                check
+              </span>
+              pacsé</label
+            >
+          </div>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="single"
+              type="radio"
+              name="situation-maritale"
+              value="single"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="single"
+              ><span *ngIf="status.value === 'single'" class="material-icons">
+                check </span
+              >célibataire</label
+            >
+          </div>
+          <div class="chip form-group">
+            <input
+              #status="ngModel"
+              id="parent-isole"
+              type="radio"
+              name="situation-maritale"
+              value="parent-isole"
+              [(ngModel)]="maritalStatus"
+            />
+            <label for="parent-isole"
+              ><span
+                *ngIf="status.value === 'parent-isole'"
+                class="material-icons"
+              >
+                check </span
+              >parent isolé</label
+            >
+          </div>
+        </fieldset>
+      </ng-container>
+      <div style="width: 62.6vw">
+        <fieldset *ngIf="maritalStatus">
+          <legend>Vos revenus</legend>
+          <div class="revenus">
+            <div class="number form-group">
+              <input
+                min="1"
+                type="number"
+                required
+                name="quotient-familial"
+                [(ngModel)]="quotientFamilial"
+                #qf="ngModel"
+                required
+              />
+              <label for="qf">Votre nombre de parts</label>
+              <span class="bar"></span>
+            </div>
+            <div class="number form-group">
+              <input
+                min="0"
+                type="number"
+                required
+                name="revenues"
+                [(ngModel)]="salaires"
+                #revNet="ngModel"
+                required
+              />
+              <label for="number">Vos revenues salariaux annuels</label>
+              <span class="bar"></span>
+              <div class="currency">€</div>
+            </div>
+            <div class="number form-group">
+              <input
+                min="0"
+                type="number"
+                required
+                name="chiffre-affaire"
+                [(ngModel)]="chiffreAffaire"
+                #revNet="ngModel"
+                required
+              />
+              <label for="number">Votre Chiffre d'Affaire</label>
+              <span class="bar"></span>
+              <div class="currency">€</div>
+            </div>
+          </div>
+        </fieldset>
+        <input
+          *ngIf="f.valid"
+          type="submit"
+          value="Estimer"
+          [disabled]="f.invalid"
+        />
+      </div>
+    </form>
+  </section>
+</article>

@@ -8,13 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImpotRevenuService } from './impot-revenu.service';
+import { ImpotRevenuesComponent } from './impot-revenues/impot-revenues.component';
 import { SeuilCaService } from './seuil-ca.service';
 import { SeuilChiffreAffaireComponent } from './seuil-chiffre-affaire/seuil-chiffre-affaire.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SeuilChiffreAffaireComponent
+    SeuilChiffreAffaireComponent,
+    ImpotRevenuesComponent,
+    
   ],
   imports: [
     CommonModule,

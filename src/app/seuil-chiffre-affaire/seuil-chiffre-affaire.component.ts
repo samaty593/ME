@@ -18,16 +18,7 @@ export class SeuilChiffreAffaireComponent {
   activityType: string;
   quotientFamilial: number;
   revenues: number;
-  maritalStatus: string;
   caSeuil: string;
-
-  public simulateIR() {
-    let params = {
-      maritalStatus: this.maritalStatus,
-      revenues: this.revenues,
-      quotientFamilial: this.quotientFamilial,
-    }
-  }
 
   public estimateCaSeuil() {
     let rate = this.activityType === "Activite de Vente" ? this.rateImpotMicro[0].rate 
