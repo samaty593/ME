@@ -9,10 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImpotRevenuService } from './impot-revenu.service';
 import { SeuilCaService } from './seuil-ca.service';
+import { SeuilChiffreAffaireComponent } from './seuil-chiffre-affaire/seuil-chiffre-affaire.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SeuilChiffreAffaireComponent
   ],
   imports: [
     CommonModule,
