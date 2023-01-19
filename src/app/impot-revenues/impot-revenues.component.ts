@@ -14,8 +14,8 @@ export class ImpotRevenuesComponent {
   quotientFamilial: number;
   salaires: number;
   chiffreAffaire: number;
-  irSansVfl;
-  irAvecVfl;
+  irSansVfl: string;
+  irAvecVfl: string;
 
   estimateImpRev() {
     let params = {
@@ -27,8 +27,8 @@ export class ImpotRevenuesComponent {
     }
 
     this.impotRev.estimateImpotRev(params).subscribe(r => {
-      this.irSansVfl = r.IrSansVfl;
-      this.irAvecVfl = r.IrAvecVfl
+      this.irSansVfl = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(r.IrSansVfl);
+      this.irAvecVfl = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(r.IrAvecVfl);
     })
   }
 

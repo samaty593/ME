@@ -11,7 +11,7 @@ h1 {
     
 }
 
-.form {
+.form, .table {
     padding: 5rem;
 }
 
@@ -206,4 +206,16 @@ fieldset {
         background-color: rgba($color: $base-color, $alpha: 0.7);
     }
 
+ }
+
+ .table {
+    width: fit-content;
+    td {
+        align-items: center;
+    }
+    p {
+        width: fit-content;
+        margin: auto;
+        margin-bottom: 3rem;
+    }
  }
