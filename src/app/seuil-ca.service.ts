@@ -18,8 +18,8 @@ export class SeuilCaService {
          params: { 
           ['revenuFraisPro']: params.revenuFraisPro,
           ['quotientFamilial']: params.quotientFamilial,
-          ['rate']: params.rate,
-          ['abattement']:  params.abattement,
+          ['activityType']: params.activityType,
+
          } }
          ) as Observable<CaSeuil>
     } 

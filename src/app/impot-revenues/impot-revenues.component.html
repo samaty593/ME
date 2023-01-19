@@ -164,4 +164,27 @@
       </div>
     </form>
   </section>
+  <section *ngIf="irSansVfl">
+    <p>Liste de vos Simulations</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de Parts</th>
+          <th>Salaires</th>
+          <th>Chiffre d'Affaire</th>
+          <th>Sans le Versement Forfaitaire</th>
+          <th>Avec le Versement Forfaitaire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ quotientFamilial }}</td>
+          <td>{{ salaires }}</td>
+          <td>{{ chiffreAffaire }}</td>
+          <td>{{ irSansVfl }}</td>
+          <td>{{ irAvecVfl }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </article>

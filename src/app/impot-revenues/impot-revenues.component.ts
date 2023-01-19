@@ -14,15 +14,22 @@ export class ImpotRevenuesComponent {
   quotientFamilial: number;
   salaires: number;
   chiffreAffaire: number;
+  irSansVfl;
+  irAvecVfl;
 
   estimateImpRev() {
     let params = {
       maritalStatus: this.maritalStatus,
-      salaires: this.salaires,
       quotientFamilial: this.quotientFamilial,
+      salaires: this.salaires,
+      chiffreAffaire: this.chiffreAffaire,
+      activityType: this.activityType,
     }
 
-    this.impotRev.estimateImpotRev(params).subscribe(r => console.log(r))
+    this.impotRev.estimateImpotRev(params).subscribe(r => {
+      this.irSansVfl = r.IrSansVfl;
+      this.irAvecVfl = r.IrAvecVfl
+    })
   }
 
 }
