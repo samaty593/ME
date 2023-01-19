@@ -38,7 +38,7 @@
           </div>
         </div>
       </fieldset>
-      <fieldset *ngIf="activityType" style="display: flex">
+      <fieldset *ngIf="activityType">
         <legend>Vos revenus</legend>
         <div class="revenus">
           <div class="number form-group">
@@ -69,8 +69,8 @@
             <div class="currency">€</div>
           </div>
         </div>
-        <input type="submit" value="Estimer" [disabled]="f.invalid" />
       </fieldset>
+      <input type="submit" value="Estimer" [disabled]="f.invalid" />
     </form>
   </section>
   <section class="result">

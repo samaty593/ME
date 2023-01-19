@@ -77,8 +77,8 @@ fieldset {
 
 .revenus {
     display: flex;
-    width: fit-content;
     column-gap: 2rem;
+    flex-basis: 30vw;
 
     input {
         height: 5rem;
@@ -114,7 +114,7 @@ fieldset {
 
         &::before {
             position: absolute;
-            background-color: #4dc1be;
+            background-color: $base-color;
             width: 0%;
             height: 100%;
             content: '';
@@ -125,7 +125,7 @@ fieldset {
 
         &::after {
             position: absolute;
-            background-color: #4dc1be;
+            background-color: $base-color;
             width: 0%;
             height: 100%;
             content: '';
@@ -137,8 +137,7 @@ fieldset {
     .currency {
         position: absolute;
         right:0;
-        font-weight: bold;
-        background-color: lightgrey;
+        background-color: $base-color;
         width: 4rem;
         height: calc(100% - 3px);
         padding: 13px 0;
