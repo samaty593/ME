@@ -29,7 +29,13 @@ export class ImpotRevenuesComponent {
     this.impotRev.estimateImpotRev(params).subscribe(r => {
       this.irSansVfl = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(r.IrSansVfl);
       this.irAvecVfl = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(r.IrAvecVfl);
+
+      localStorage.setItem
     })
+  }
+
+  clearData() {
+    localStorage.clear();
   }
 
 }

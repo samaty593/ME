@@ -180,7 +180,7 @@
   </section>
   <section class="table" *ngIf="irAvecVfl">
     <p>Liste de vos Simulations</p>
-    <input type="button" name="effacer" />
+    <input type="button" value="effacer" (click)="clearData()" />
     <table>
       <thead>
         <tr>
