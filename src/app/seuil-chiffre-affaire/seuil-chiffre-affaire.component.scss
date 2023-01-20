@@ -78,7 +78,7 @@ fieldset {
 .revenus {
     display: flex;
     column-gap: 2rem;
-    flex-basis: 30vw;
+    flex-basis: 50vw;
 
     input {
         height: 5rem;
@@ -144,19 +144,20 @@ fieldset {
         text-align: center;
         border-radius: 0 10px 10px 0;
     }
+
+    
 }
 
  input[type="submit"] {
     border: none;
-    margin-left: 1rem;
     padding: 1rem 5rem;
     background-color: $base-color;
     border-radius: 10px;
     color: white;
     cursor: pointer;
     height: 5rem;
-    font-weight: bold;
     transition: background-color 0.3s ease;
+    margin-top: 3.6rem;
     
     &:hover {
         background-color: white;

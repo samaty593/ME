@@ -38,39 +38,41 @@
           </div>
         </div>
       </fieldset>
-      <fieldset *ngIf="activityType">
-        <legend>Vos revenus</legend>
-        <div class="revenus">
-          <div class="number form-group">
-            <input
-              min="1"
-              type="number"
-              required
-              name="quotient-familial"
-              [(ngModel)]="quotientFamilial"
-              #qf="ngModel"
-              required
-            />
-            <label for="qf">Votre nombre de parts</label>
-            <span class="bar"></span>
+      <div *ngIf="activityType">
+        <fieldset>
+          <legend>Vos revenus</legend>
+          <div class="revenus">
+            <div class="number form-group">
+              <input
+                min="1"
+                type="number"
+                required
+                name="quotient-familial"
+                [(ngModel)]="quotientFamilial"
+                #qf="ngModel"
+                required
+              />
+              <label for="qf">Votre nombre de parts</label>
+              <span class="bar"></span>
+            </div>
+            <div class="number form-group">
+              <input
+                min="0"
+                type="number"
+                required
+                name="revenues"
+                [(ngModel)]="revenues"
+                #revNet="ngModel"
+                required
+              />
+              <label for="number">Vos revenues salariaux annuels</label>
+              <span class="bar"></span>
+              <div class="currency">€</div>
+            </div>
           </div>
-          <div class="number form-group">
-            <input
-              min="0"
-              type="number"
-              required
-              name="revenues"
-              [(ngModel)]="revenues"
-              #revNet="ngModel"
-              required
-            />
-            <label for="number">Vos revenues salariaux annuels</label>
-            <span class="bar"></span>
-            <div class="currency">€</div>
-          </div>
-        </div>
-      </fieldset>
-      <input type="submit" value="Estimer" [disabled]="f.invalid" />
+        </fieldset>
+        <input type="submit" value="Estimer" [disabled]="f.invalid" />
+      </div>
     </form>
   </section>
   <section class="result">
