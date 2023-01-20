@@ -16,6 +16,7 @@ h1 {
 }
 
 
+
 input[type="radio"] {
 display: none;
 }
@@ -69,8 +70,6 @@ fieldset {
         position: relative;
         display: flex;
         flex-direction: column;
-        flex-basis: 20vw;
-        flex-shrink: 0;
 
         input:focus + label, input:valid + label {
             font-size: 0;
@@ -116,6 +115,10 @@ fieldset {
 .revenus {
     display: flex;
     column-gap: 2rem;
+
+    .form-group {
+        flex-basis: 25vw;
+    }
 
     input {
         height: 5rem;
@@ -184,9 +187,9 @@ fieldset {
 }
 
  input[type="submit"] {
-    float: right;
+    display: block;
+    margin-left:auto;
     border: none;
-    margin-left: 1rem;
     padding: 1rem 5rem;
     background-color: $base-color;
     border-radius: 10px;
@@ -208,10 +211,18 @@ fieldset {
 
  }
 
+.mer {
+        display: flex;
+        flex-direction: column;
+        width: 75vw;
+    }
+ 
+
  .nota-bene {
+    margin-top: 3rem;
     font-size: 1.2rem;
     color: rgba($color: black, $alpha: 0.7);
-    width: 70vw;
+
     p {
         line-height: 18px;
         text-align: center;
@@ -224,12 +235,27 @@ fieldset {
 
  .table {
     width: fit-content;
-    td {
-        align-items: center;
+    
+    table {
+        width: 75vw;
+    }
+
+    th {
+        padding: 0.5rem 1rem;
+        font-weight: normal;
+    }
+
+    td, th {
+        text-align: center;
     }
     p {
         width: fit-content;
         margin: auto;
-        margin-bottom: 3rem;
+        margin-bottom: 1.5rem;
     }
  }
+ table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+
+  }
