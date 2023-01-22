@@ -1,9 +1,11 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, registerLocaleData } from '@angular/common';
 import { Component } from '@angular/core';
 import {  Inject, PLATFORM_ID } from '@angular/core';
 
 import { SeuilCaService } from '../seuil-ca.service';
+import localeFr from '@angular/common/locales/fr';
 
+registerLocaleData(localeFr, 'fr');
 @Component({
   selector: 'seuil-chiffre-affaire',
   templateUrl: './seuil-chiffre-affaire.component.html',
