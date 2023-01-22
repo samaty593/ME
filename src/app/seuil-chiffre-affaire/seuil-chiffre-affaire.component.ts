@@ -1,4 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
 import { Component } from '@angular/core';
+import {  Inject, PLATFORM_ID } from '@angular/core';
 
 import { SeuilCaService } from '../seuil-ca.service';
 
@@ -8,18 +10,21 @@ import { SeuilCaService } from '../seuil-ca.service';
   styleUrls: ['./seuil-chiffre-affaire.component.scss']
 })
 export class SeuilChiffreAffaireComponent {
-  constructor(private seuilCa: SeuilCaService) {
-    const store = localStorage.getItem('storedSeuilCA');
-    this.storedSeuilCA = store ? JSON.parse(store) : null;
-  }
-
+  constructor(private seuilCa: SeuilCaService, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   activityType: string;
   quotientFamilial: number;
   salaires: number;
   caSeuil: number;
   storedSeuilCA: any[] = [];
-
+  
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const store = localStorage.getItem('storedSeuilCA');
+      this.storedSeuilCA = store ? JSON.parse(store) : null;
+   }
+  }
+  
   public estimateCaSeuil() {
     let params = {
       revenuFraisPro: 0.9 * this.salaires,
@@ -54,5 +59,4 @@ export class SeuilChiffreAffaireComponent {
     localStorage.clear();
     this.storedSeuilCA = null;
   }
-
 }

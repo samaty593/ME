@@ -1,6 +1,6 @@
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, isPlatformBrowser } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
 import { ImpotRevenuService } from '../impot-revenu.service';
 
@@ -21,9 +21,17 @@ interface StoredSimu {
 })
 export class ImpotRevenuesComponent {
   count: number = 0;
-  constructor(private impotRev: ImpotRevenuService) {
-    const store = localStorage.getItem('storedIrSimulation')
-    this.storedSimulation = store ? JSON.parse(store) : null;
+  constructor(private impotRev: ImpotRevenuService, @Inject(PLATFORM_ID) private platformId: Object) {
+    
+  }
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const store = localStorage.getItem('storedIrSimulation');
+      this.storedSimulation = store ? JSON.parse(store) : null;
+   }
+
+
   }
 
   maritalStatus?: string;
