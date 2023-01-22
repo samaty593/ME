@@ -187,17 +187,17 @@
           <th>Nombre de Parts</th>
           <th>Salaires</th>
           <th>Chiffre d'Affaire</th>
-          <th>Sans le Versement Forfaitaire</th>
-          <th>Avec le Versement Forfaitaire</th>
+          <th>Sans Versement Forfaitaire</th>
+          <th>Avec Versement Forfaitaire</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{{ quotientFamilial }}</td>
-          <td>{{ salaires }}</td>
-          <td>{{ chiffreAffaire }}</td>
-          <td>{{ irSansVfl }}</td>
-          <td>{{ irAvecVfl }}</td>
+        <tr *ngFor="let item of storedSimulation">
+          <td>{{ item.quotientFamilial }}</td>
+          <td>{{ item.salaires }}</td>
+          <td>{{ item.chiffreAffaire }}</td>
+          <td>{{ item.irSansVfl }}</td>
+          <td>{{ item.irAvecVfl }}</td>
         </tr>
       </tbody>
     </table>

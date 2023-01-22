@@ -8,14 +8,11 @@ h1 {
     font-size: 4rem;
     font-weight: normal;
     letter-spacing: normal;
-    
 }
 
 .form, .table {
     padding: 5rem;
 }
-
-
 
 input[type="radio"] {
 display: none;
@@ -234,9 +231,13 @@ fieldset {
 
 
  .table {
+     width: fit-content;
+
     p {
         color: $base-color;
         font-weight: bold;
+        width: fit-content;
+        margin: auto;
     }
 
     input {
@@ -248,6 +249,7 @@ fieldset {
         display: block;
         margin-left: auto;
         border: 1px solid transparent;
+        cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
@@ -256,32 +258,31 @@ fieldset {
             border : 1px solid rgba($color: black, $alpha: 0.3);
         }
     }
-
-    padding-top: 0;
-     p {
-         width: fit-content;
-         margin: auto;
-     }
-
-    width: fit-content;
     
-    table {
-        font-size: 1.4rem;
-        width: 75vw;
-        margin-top: 2rem;
+    table, th, td {
+       border-collapse: collapse;
+       text-align: center;
+
     }
+
+    table {
+      font-size: 1.4rem;
+      width: 75vw;
+      margin-top: 2rem;
+    }
+
 
     th {
+      background-color: rgba($color: $base-color, $alpha: 1.0);
+      color: white;
+      font-weight: normal;
+}
+
+    th, td {
         padding: 0.5rem 1rem;
-        font-weight: normal;
     }
 
-    td, th {
-        text-align: center;
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
     }
- table, th, td {
-    border: 1px solid;
-    border-collapse: collapse;
-
-  }
  }
