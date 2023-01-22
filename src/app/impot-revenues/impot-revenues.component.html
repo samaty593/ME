@@ -194,10 +194,20 @@
       <tbody>
         <tr *ngFor="let item of storedSimulation">
           <td>{{ item.quotientFamilial }}</td>
-          <td>{{ item.salaires }}</td>
-          <td>{{ item.chiffreAffaire }}</td>
-          <td>{{ item.irSansVfl }}</td>
-          <td>{{ item.irAvecVfl }}</td>
+          <td>
+            {{ item.salaires | currency : "EUR" : "symbol" : "0.0" : "fr" }}
+          </td>
+          <td>
+            {{
+              item.chiffreAffaire | currency : "EUR" : "symbol" : "0.0" : "fr"
+            }}
+          </td>
+          <td>
+            {{ item.irSansVfl | currency : "EUR" : "symbol" : "0.0" : "fr" }}
+          </td>
+          <td>
+            {{ item.irAvecVfl | currency : "EUR" : "symbol" : "0.0" : "fr" }}
+          </td>
         </tr>
       </tbody>
     </table>

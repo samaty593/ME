@@ -61,7 +61,7 @@
                 type="number"
                 required
                 name="revenues"
-                [(ngModel)]="revenues"
+                [(ngModel)]="salaires"
                 #revNet="ngModel"
                 required
               />
@@ -75,9 +75,29 @@
       </div>
     </form>
   </section>
-  <section class="result">
-    <div *ngIf="caSeuil">
-      <span>Seuil de Chiffre d'Affaire: </span><span>{{ caSeuil }} </span>
-    </div>
+  <section class="table" *ngIf="caSeuil">
+    <p>Liste de vos Simulations</p>
+    <input type="button" value="effacer" (click)="clearStorage()" />
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de Parts</th>
+          <th>Salaires</th>
+          <th>Seuil de Chiffre d'Affaire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of storedSeuilCA">
+          <td>{{ item.quotientFamilial }}</td>
+          <td>
+            {{ item.salaires | currency : "EUR" : "symbol" : "0.0" : "fr" }}
+          </td>
+          <td>
+            {{ item.caSeuil | currency : "EUR" : "symbol" : "0.0" : "fr" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </article>
+`

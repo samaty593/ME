@@ -1,5 +1,10 @@
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 import { Component } from '@angular/core';
+
 import { ImpotRevenuService } from '../impot-revenu.service';
+
+registerLocaleData(localeFr, 'fr');
 
 interface StoredSimu {
   quotientFamilial: number,
@@ -17,7 +22,7 @@ interface StoredSimu {
 export class ImpotRevenuesComponent {
   count: number = 0;
   constructor(private impotRev: ImpotRevenuService) {
-    const store = localStorage.getItem('cachedIrSimulation')
+    const store = localStorage.getItem('storedIrSimulation')
     this.storedSimulation = store ? JSON.parse(store) : null;
   }
 
@@ -51,16 +56,15 @@ export class ImpotRevenuesComponent {
         irAvecVfl: this.irAvecVfl,
       };
 
-      const store = JSON.parse(localStorage.getItem('cachedIrSimulation'));
+      const store = JSON.parse(localStorage.getItem('storedIrSimulation'));
 
       if(!store) {
         this.storedSimulation = [storedSimulation];
-        localStorage.setItem('cachedIrSimulation', `${JSON.stringify([storedSimulation])}`);
+        localStorage.setItem('storedIrSimulation', `${JSON.stringify([storedSimulation])}`);
       }
       else {
         this.storedSimulation = [...this.storedSimulation, storedSimulation];
-        console.log(this.storedSimulation)
-        localStorage.setItem('cachedIrSimulation', `${JSON.stringify(this.storedSimulation)}`)
+        localStorage.setItem('storedIrSimulation', `${JSON.stringify(this.storedSimulation)}`)
       }
     })
   }

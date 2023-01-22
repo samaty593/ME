@@ -12,7 +12,7 @@ h1 {
 }
 
 
-.form {
+.form, .table{
     padding: 5rem;
 }
 
@@ -212,4 +212,61 @@ form {
             font-style: normal;
             margin-right: 2rem;
     }
+}
+
+.table {
+    width: fit-content;
+
+   p {
+       color: $base-color;
+       font-weight: bold;
+       width: fit-content;
+       margin: auto;
+   }
+
+   input {
+       background-color: rgba($color: black, $alpha: 0.3);
+       color: white;
+       padding: 1rem 2rem;
+       border-radius: 5px;
+       border: none;
+       display: block;
+       margin-left: auto;
+       border: 1px solid transparent;
+       cursor: pointer;
+       transition: all 0.3s ease;
+
+       &:hover {
+           background-color: white;
+           color: rgba($color: black, $alpha: 0.3);
+           border : 1px solid rgba($color: black, $alpha: 0.3);
+       }
+   }
+   
+   table, th, td {
+      border-collapse: collapse;
+      text-align: center;
+
+   }
+
+   table {
+     font-size: 1.4rem;
+     width: 75vw;
+     margin-top: 2rem;
+   }
+
+
+   th {
+     background-color: rgba($color: $base-color, $alpha: 1.0);
+     color: white;
+     font-weight: normal;
+}
+
+   th, td {
+       padding: 0.5rem 1rem;
+   }
+
+   tr:nth-child(even) {
+       background-color: #f2f2f2;
+   }
 }

@@ -8,26 +8,51 @@ import { SeuilCaService } from '../seuil-ca.service';
   styleUrls: ['./seuil-chiffre-affaire.component.scss']
 })
 export class SeuilChiffreAffaireComponent {
-  constructor(private seuilCa: SeuilCaService) {}
+  constructor(private seuilCa: SeuilCaService) {
+    const store = localStorage.getItem('storedSeuilCA');
+    this.storedSeuilCA = store ? JSON.parse(store) : null;
+  }
 
 
   activityType: string;
   quotientFamilial: number;
-  revenues: number;
-  caSeuil: string;
+  salaires: number;
+  caSeuil: number;
+  storedSeuilCA: any[] = [];
 
   public estimateCaSeuil() {
     let params = {
-      revenuFraisPro: 0.9 * this.revenues,
+      revenuFraisPro: 0.9 * this.salaires,
       quotientFamilial: this.quotientFamilial,
       activityType: this.activityType,
     }
             
     this.seuilCa.estimateSeuilCa(params)
       .subscribe(r => {
-        this.caSeuil = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(r.caseuil)
-         
-      })
+
+        this.caSeuil = r.caseuil;
+        let storedSeuilCA = {
+          quotientFamilial: this.quotientFamilial,
+          salaires: this.salaires,
+          caSeuil: r.caseuil,
+        }
+
+        const store = localStorage.getItem('storedSeuilCA');
+
+        if(!store) {
+          this.storedSeuilCA = [storedSeuilCA];
+          localStorage.setItem('storedSeuilCA', `${JSON.stringify([storedSeuilCA])}`);
+        }
+        else {
+          this.storedSeuilCA = [...this.storedSeuilCA, storedSeuilCA];
+          localStorage.setItem('storedSeuilCA', `${JSON.stringify(this.storedSeuilCA)}`)
+        }
+      } )
+  }
+
+  clearStorage() {
+    localStorage.clear();
+    this.storedSeuilCA = null;
   }
 
 }
