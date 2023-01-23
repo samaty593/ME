@@ -6,28 +6,28 @@ nav {
         list-style: none;
         height: 6rem;
         align-items: center;
-        background-color: $base-color;
+        background-color: rgba($color: $base-color, $alpha: 0.8);
+        font-size: 1.4rem;
+        column-gap: 2rem;
         
         li {
-            padding: 1rem 0.5rem;
             a {
                 text-decoration: none;
-                color: white;
 
             }
             a:link {
-                color: black;
+                color: white;
               }
             a:visited {
-              color: black;
+              color: white;
             }
             
             a:hover {
-              color: blue;
+              color: $base-color;
             }
             
             a:active {
-              color: black;
+              color: white;
               }
 
             }
