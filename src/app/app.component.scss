@@ -1,0 +1,43 @@
+$base-color: #96154a;
+
+nav {
+    ul {
+        display: flex;
+        list-style: none;
+        height: 6rem;
+        align-items: center;
+        background-color: $base-color;
+        
+        li {
+            padding: 1rem 0.5rem;
+            a {
+                text-decoration: none;
+                color: white;
+
+            }
+            a:link {
+                color: black;
+              }
+            a:visited {
+              color: black;
+            }
+            
+            a:hover {
+              color: blue;
+            }
+            
+            a:active {
+              color: black;
+              }
+
+            }
+        li:first-child {
+            margin-left: 1rem;
+        }
+        li:last-child {
+                margin-left: auto;
+                margin-right: 1rem;
+            }      
+          }
+
+}
