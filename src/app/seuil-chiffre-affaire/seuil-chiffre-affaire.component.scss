@@ -175,6 +175,8 @@ fieldset {
     
         &:disabled {
             background-color: rgba($color: $base-color, $alpha: 0.7);
+            border: none;
+            color: white;
         }
     }
 
@@ -194,24 +196,6 @@ form {
         }
     }
 
-}
-
-
-.result {
-    div {
-        width:fit-content;
-        margin: auto;
-        font-size: 3rem;
-        font-style: italic;
-        color:rgba($color: #000000, $alpha: 0.6)
-        
-    }
-
-    span:first-child {
-            color:$base-color;
-            font-style: normal;
-            margin-right: 2rem;
-    }
 }
 
 .table {
@@ -242,31 +226,29 @@ form {
            border : 1px solid rgba($color: black, $alpha: 0.3);
        }
    }
-   
-   table, th, td {
-      border-collapse: collapse;
-      text-align: center;
-
-   }
 
    table {
-     font-size: 1.4rem;
+     font-size: 1.2rem;
      width: 75vw;
      margin-top: 2rem;
+     border-collapse: collapse;
+     text-align: center;
    }
 
 
    th {
      background-color: rgba($color: $base-color, $alpha: 1.0);
      color: white;
-     font-weight: normal;
+     padding: 0.5rem 1rem;
+     font-size: 1.4;
 }
 
-   th, td {
-       padding: 0.5rem 1rem;
+    td {
+        padding: 0.5rem 1rem;
+
    }
 
    tr:nth-child(even) {
-       background-color: #f2f2f2;
+       background-color: rgba($color: #f2f2f2, $alpha: 1.0);
    }
 }

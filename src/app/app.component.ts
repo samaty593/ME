@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeFr, 'fr');
 
 
 @Component({

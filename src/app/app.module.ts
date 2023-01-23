@@ -11,12 +11,14 @@ import { ImpotRevenuService } from './impot-revenu.service';
 import { ImpotRevenuesComponent } from './impot-revenues/impot-revenues.component';
 import { SeuilCaService } from './seuil-ca.service';
 import { SeuilChiffreAffaireComponent } from './seuil-chiffre-affaire/seuil-chiffre-affaire.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SeuilChiffreAffaireComponent,
     ImpotRevenuesComponent,
+    PagenotfoundComponent,
     
   ],
   imports: [

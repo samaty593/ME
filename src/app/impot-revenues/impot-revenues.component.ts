@@ -1,10 +1,7 @@
-import { isPlatformBrowser, registerLocaleData } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
 import { ImpotRevenuService } from '../impot-revenu.service';
-import localeFr from '@angular/common/locales/fr';
-
-registerLocaleData(localeFr, 'fr');
 
 
 interface StoredSimu {

@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { ImpotRevenuesComponent } from './impot-revenues/impot-revenues.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { SeuilChiffreAffaireComponent } from './seuil-chiffre-affaire/seuil-chiffre-affaire.component';
+
+const routes: Routes = [
+  { path: "seuil-chiffre-d'affaire", component: SeuilChiffreAffaireComponent },
+  { path: "impot-revenues-versement-forfaitaire", component: ImpotRevenuesComponent },
+  { path: '**', component: PagenotfoundComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot( routes, {
