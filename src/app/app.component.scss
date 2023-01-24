@@ -9,6 +9,7 @@ nav {
         background-color: rgba($color: $base-color, $alpha: 0.8);
         font-size: 1.4rem;
         column-gap: 2rem;
+        padding-left: 5rem;
         
         li {
             a {
@@ -35,6 +36,7 @@ nav {
             margin-left: 1rem;
         }
         li:last-child {
+                padding-right:3rem;
                 margin-left: auto;
                 margin-right: 1rem;
             }      
