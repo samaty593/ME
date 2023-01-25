@@ -71,7 +71,12 @@
             </div>
           </div>
         </fieldset>
-        <input type="submit" value="Estimer" [disabled]="f.invalid" />
+        <input
+          type="submit"
+          value="Estimer"
+          [disabled]="f.invalid"
+          (click)="makeRipple()"
+        />
       </div>
     </form>
   </section>
@@ -98,5 +103,8 @@
         </tr>
       </tbody>
     </table>
+  </section>
+  <section class="anim-bottom">
+    <div [class.ripple]="addingRowTable"></div>
   </section>
 </article>

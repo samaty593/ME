@@ -80,6 +80,10 @@ export class ImpotRevenuesComponent {
 
   public makeRipple() {
     this.addingRowTable = !this.addingRowTable;
+    setTimeout(() => {
+      this.addingRowTable = false;
+  }, 300);
+
   }
 
 }

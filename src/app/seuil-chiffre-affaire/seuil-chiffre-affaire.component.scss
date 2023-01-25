@@ -256,3 +256,25 @@ form {
        background-color: rgba($color: #f2f2f2, $alpha: 1.0);
    }
 }
+
+.anim-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    div {
+      height: 3rem;
+
+      &.ripple {
+          transform: scale(0);
+          animation: ripple 600ms linear;
+          background-color: purple;
+      }
+      
+     @keyframes ripple {
+        to {
+          transform: scale(6);
+          opacity: 0;
+        }
+      }
+    }
+}

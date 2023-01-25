@@ -17,6 +17,8 @@ export class SeuilChiffreAffaireComponent {
   salaires: number;
   caSeuil: number;
   storedSeuilCA: any[] = [];
+  addingRowTable: boolean = false;
+
   
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -58,5 +60,13 @@ export class SeuilChiffreAffaireComponent {
   clearStorage() {
     localStorage.clear();
     this.storedSeuilCA = null;
+  }
+
+  makeRipple() {
+    this.addingRowTable = !this.addingRowTable;
+    setTimeout(() => {
+      this.addingRowTable = false;
+  }, 300);
+
   }
 }
