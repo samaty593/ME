@@ -160,6 +160,7 @@
           type="submit"
           value="Estimer"
           [disabled]="f.invalid"
+          (click)="makeRipple()"
         />
         <aside class="nota-bene" *ngIf="f.valid">
           <p>
@@ -178,8 +179,7 @@
       </div>
     </form>
   </section>
-  <section class="table">
-    <div></div>
+  <section class="table" *ngIf="irAvecVfl">
     <p>Liste de vos Simulations</p>
     <input type="button" value="effacer" (click)="clearData()" />
     <table>
@@ -212,5 +212,8 @@
         </tr>
       </tbody>
     </table>
+  </section>
+  <section class="anim-bottom">
+    <div [class.ripple]="addingRowTable"></div>
   </section>
 </article>

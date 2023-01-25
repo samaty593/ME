@@ -37,6 +37,11 @@ nav {
 }
 
 main {
-  height: 100vh;
+  min-height: calc(100vh - 6rem);
+}
+
+footer {
+  height: 15rem;
+  background-color: rgba($color: black, $alpha: 0.8);
 }
 

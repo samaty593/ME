@@ -18,7 +18,6 @@ interface StoredSimu {
   styleUrls: ['./impot-revenues.component.scss']
 })
 export class ImpotRevenuesComponent {
-  count: number = 0;
   constructor(private impotRev: ImpotRevenuService, @Inject(PLATFORM_ID) private platformId: Object) {
     
   }
@@ -27,9 +26,7 @@ export class ImpotRevenuesComponent {
     if (isPlatformBrowser(this.platformId)) {
       const store = localStorage.getItem('storedIrSimulation');
       this.storedSimulation = store ? JSON.parse(store) : null;
-   }
-
-
+    }
   }
 
   maritalStatus?: string;
@@ -40,8 +37,9 @@ export class ImpotRevenuesComponent {
   irSansVfl: number;
   irAvecVfl: number;
   storedSimulation: StoredSimu[] = [];
+  addingRowTable: boolean = false;
 
-  estimateImpRev() {
+  public estimateImpRev() {
     let params = {
       quotientFamilial: this.quotientFamilial,
       salaires: this.salaires,
@@ -75,9 +73,13 @@ export class ImpotRevenuesComponent {
     })
   }
 
-  clearData() {
+  public clearData() {
     localStorage.clear();
     this.storedSimulation = [];
+  }
+
+  public makeRipple() {
+    this.addingRowTable = !this.addingRowTable;
   }
 
 }
