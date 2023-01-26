@@ -43,5 +43,17 @@ main {
 footer {
   height: 15rem;
   background-color: rgba($color: black, $alpha: 0.8);
+
+  address {
+    float: right;
+    margin-right: 3rem;
+    margin-top: 2rem;
+    a {
+      color: rgba($color: black, $alpha: 0.5);
+      font-size: 1.4rem;
+      font-style: normal;
+      text-decoration: none;
+    }
+  }
 }
 
