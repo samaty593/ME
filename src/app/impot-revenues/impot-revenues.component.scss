@@ -273,16 +273,22 @@ fieldset {
 
     }
 
+    thead {
+        background-color: rgba($color: $base-color, $alpha: 1.0);
 
-    th {
-      background-color: rgba($color: $base-color, $alpha: 1.0);
-      color: white;
-      font-size: 1.4;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-
+        tr{
+            th {
+                color: white;
+                font-size: 1.4;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+              }& :nth-last-child(-n+2) {
+                  background-color: purple;
+              }
+          
+        }
     }
-
+   
      td {
         padding: 0.5rem 1rem;
     }

@@ -240,14 +240,20 @@ form {
    }
 
 
-   th {
-     background-color: rgba($color: $base-color, $alpha: 1.0);
-     color: white;
-     padding: 0.5rem 1rem;
-     font-size: 1.4;
-     border-radius: 5px;
-
-}
+   thead {
+       background-color: rgba($color: $base-color, $alpha: 1.0);
+       tr {
+           th {
+             color: white;
+             padding: 0.5rem 1rem;
+             font-size: 1.4;
+             border-radius: 5px;
+           }& :last-child {
+            background-color: purple;
+           }
+       }
+   }
+   
 
     td {
         padding: 0.5rem 1rem;
