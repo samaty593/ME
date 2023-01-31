@@ -12,6 +12,7 @@ import { ImpotRevenuesComponent } from './impot-revenues/impot-revenues.componen
 import { SeuilCaService } from './seuil-ca.service';
 import { SeuilChiffreAffaireComponent } from './seuil-chiffre-affaire/seuil-chiffre-affaire.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ImmatriculationComponent } from './immatriculation/immatriculation.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     SeuilChiffreAffaireComponent,
     ImpotRevenuesComponent,
     PagenotfoundComponent,
+    ImmatriculationComponent,
     
   ],
   imports: [
