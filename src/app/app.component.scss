@@ -46,8 +46,10 @@ footer {
 
   address {
     width: fit-content;
-    margin: auto;
+    margin-left: auto;
     margin-right: 3rem;
+    padding-top: 3rem;
+
     a {
       color: rgba($color: white, $alpha: 0.5);
       font-size: 1.4rem;
