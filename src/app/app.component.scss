@@ -45,7 +45,8 @@ footer {
   background-color: rgba($color: black, $alpha: 0.8);
 
   address {
-    float: right;
+    width: fit-content;
+    margin: auto;
     margin-right: 3rem;
     margin-top: 2rem;
     a {
@@ -54,7 +55,7 @@ footer {
       font-style: normal;
       text-decoration: none;
     } &::before {
-        content: '📞 ';
+        content: '📧';
     }
   }
 }
